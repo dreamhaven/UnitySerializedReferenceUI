@@ -31,11 +31,12 @@ public static class SerializeReferenceInspectorButton
         GUI.backgroundColor = backgroundColor; 
          
         
-        var names = ManagedReferenceUtility.GetSplitNamesFromTypename(property.managedReferenceFullTypename);
-        var className = string.IsNullOrEmpty(names.ClassName) ? "Null (Assign)" : names.ClassName;
         // SecretDoor edit - just show the class name for simplicity
+        //var names = ManagedReferenceUtility.GetSplitNamesFromTypename(property.managedReferenceFullTypename);
+        //var className = string.IsNullOrEmpty(names.ClassName) ? "Null (Assign)" : names.ClassName;
         //var assemblyName = names.AssemblyName;
         //if (GUI.Button(buttonPosition, new GUIContent(className, className + "  ( "+ assemblyName +" )" )))
+        var className = property.GetManagedReferenceFieldType().Name;
         if (GUI.Button(buttonPosition, new GUIContent(className)))
             property.ShowContextMenuForManagedReference(buttonPosition, filters);
         
