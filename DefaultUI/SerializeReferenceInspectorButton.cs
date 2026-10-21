@@ -33,8 +33,10 @@ public static class SerializeReferenceInspectorButton
         
         var names = ManagedReferenceUtility.GetSplitNamesFromTypename(property.managedReferenceFullTypename);
         var className = string.IsNullOrEmpty(names.ClassName) ? "Null (Assign)" : names.ClassName;
-        var assemblyName = names.AssemblyName;
-        if (GUI.Button(buttonPosition, new GUIContent(className, className + "  ( "+ assemblyName +" )" )))
+        // SecretDoor edit - just show the class name for simplicity
+        //var assemblyName = names.AssemblyName;
+        //if (GUI.Button(buttonPosition, new GUIContent(className, className + "  ( "+ assemblyName +" )" )))
+        if (GUI.Button(buttonPosition, new GUIContent(className)))
             property.ShowContextMenuForManagedReference(buttonPosition, filters);
         
         GUI.backgroundColor = storedColor;

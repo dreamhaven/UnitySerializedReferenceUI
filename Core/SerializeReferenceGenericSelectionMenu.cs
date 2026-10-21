@@ -53,8 +53,11 @@ public static class SerializeReferenceGenericSelectionMenu
     
     private static void AddItemToContextMenu(Type type, GenericMenu genericMenuContext, SerializedProperty property)
     {
-        var assemblyName =  type.Assembly.ToString().Split('(', ',')[0];
-        var entryName = type + "  ( " + assemblyName + " )";
+        // SecretDoor - Customized for UI simplicity's sake
+        // var assemblyName =  type.Assembly.ToString().Split('(', ',')[0];
+        // var entryName = type + "  ( " + assemblyName + " )";
+        string entryName = type.Name;
+        // SecretDoor - End customization
         genericMenuContext.AddItem(new GUIContent(entryName), false, AssignNewInstanceCommand, new GenericMenuParameterForAssignInstanceCommand(type, property));
     }
     
